@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 
-let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = false, position = "left", children, className }) => {
+let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = false, position = "left", children, className, style }) => {
 
   // closed state style
   let left = position === 'left' ? (-1 * width) + 'px' : 'auto';
@@ -32,7 +32,7 @@ let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = fal
   }
 
   return (
-    <div style={currStyle} className={className}>
+    <div style={{...style, ...currStyle}} className={className}>
       {children}
     </div>
   );
@@ -42,7 +42,8 @@ OffCanvasMenu.propTypes = {
   width: PropTypes.number,
   transitionDuration: PropTypes.number,
   isMenuOpened: PropTypes.bool,
-  position: PropTypes.oneOf(["left", "right"])
+  position: PropTypes.oneOf(["left", "right"]),
+  style: PropTypes.object
 };
 
 export default OffCanvasMenu;

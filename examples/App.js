@@ -16,8 +16,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <OffCanvas width={300} transitionDuration={300} isMenuOpened={this.state.isMenuOpened} position={"left"}>
-        <OffCanvasBody className={styles.bodyClass}>
+      <OffCanvas width={300} transitionDuration={300} isMenuOpened={this.state.isMenuOpened} position={"right"}>
+        <OffCanvasBody className={styles.bodyClass} style={{fontSize: '30px'}}>
           <p>This is the main body container.</p>
           <p><a href="#" onClick={this.handleClick.bind(this)}>Click here</a> to toggle the menu.</p>
         </OffCanvasBody>

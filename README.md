@@ -15,10 +15,10 @@ $ npm install --save react-offcanvas
 
 ````jsx
 <OffCanvas width={300} transitionDuration={300} isMenuOpened={false} position={"left"}>
-  <OffCanvasBody className={"my-body-class"}>
+  <OffCanvasBody className={"my-body-class"} style={{fontSize: '18px'}}>
     This is the canvas body.
   </OffCanvasBody>
-  <OffCanvasMenu className={"my-menu-class"}>
+  <OffCanvasMenu className={"my-menu-class"} style={{fontWeight: 'bold'}}>
     This is the canvas menu.
   </OffCanvasMenu>
 </OffCanvas>
@@ -45,8 +45,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <OffCanvas width={300} transitionDuration={300} isMenuOpened={this.state.isMenuOpened} position={"left"}>
-        <OffCanvasBody className={styles.bodyClass}>
+      <OffCanvas width={300} transitionDuration={300} isMenuOpened={this.state.isMenuOpened} position={"right"}>
+        <OffCanvasBody className={styles.bodyClass} style={{fontSize: '30px'}}>
           <p>This is the main body container.</p>
           <p><a href="#" onClick={this.handleClick.bind(this)}>Click here</a> to toggle the menu.</p>
         </OffCanvasBody>
@@ -95,6 +95,7 @@ This is the main component you will be using to compose your body and menu.
 | `isMenuOpened` | `bool` | false | Is the menu opened or not. |
 | `position` | `string` | "left" | Position the menu to the "left" or "right". |
 | `className` | `string` | | Custom className for the element. |
+| `style` | `object` | | CSS style object for the element. |
 
 ### `OffCanvasMenu`
 
@@ -105,3 +106,4 @@ This is the main component you will be using to compose your body and menu.
 | `isMenuOpened` | `bool` | false | Is the menu opened or not. |
 | `position` | `string` | "left" | Position the menu to the "left" or "right". |
 | `className` | `string` | | Custom className for the element. |
+| `style` | `object` | | CSS style object for the element. |
