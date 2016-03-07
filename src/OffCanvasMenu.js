@@ -2,21 +2,27 @@
 
 import React, { PropTypes } from 'react';
 
-let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = false, children }) => {
+let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = false, position = "left", children, className }) => {
 
   // closed state style
+  let left = position === 'left' ? (-1 * width) + 'px' : 'auto';
+  let right = position === 'left' ? 'auto' : (-1 * width) + 'px';
+  let translateX = position === 'left' ? (-1 * width) : 0;
   let closedStyle = {
     width: width + 'px',
     position: 'fixed',
     top: '0px',
-    right: (-1 * width) + 'px',
-    transform: 'translate(0px, 0px)',
-    transitionDuration: transitionDuration + 'ms'
+    left: left,
+    right: right,
+    transform: 'translate(' + translateX + 'px, 0px)',
+    transitionDuration: transitionDuration + 'ms',
+    backfaceVisibility: 'hidden'
   };
 
   // open state style
+  let translateOpenX = position === 'left' ? width : (-1 * width);
   let openStyle = {
-    transform: 'translate(' + (-1 * width) + 'px, 0px)'
+    transform: 'translate(' + translateOpenX + 'px, 0px)'
   };
 
   // create current state styles
@@ -26,7 +32,7 @@ let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = fal
   }
 
   return (
-    <div style={currStyle}>
+    <div style={currStyle} className={className}>
       {children}
     </div>
   );
@@ -35,7 +41,8 @@ let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = fal
 OffCanvasMenu.propTypes = {
   width: PropTypes.number,
   transitionDuration: PropTypes.number,
-  isMenuOpened: PropTypes.bool
+  isMenuOpened: PropTypes.bool,
+  position: PropTypes.oneOf(["left", "right"])
 };
 
 export default OffCanvasMenu;

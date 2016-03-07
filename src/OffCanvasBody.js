@@ -2,17 +2,20 @@
 
 import React, { PropTypes } from 'react';
 
-let OffCanvasBody = ({ width = 250, transitionDuration = 250, isMenuOpened = false, children }) => {
+let OffCanvasBody = ({ width = 250, transitionDuration = 250, isMenuOpened = false, position = "left", children, className }) => {
 
   // closed state style
+  let translateX = position === 'left' ? 0 : 0;
   let closedStyle = {
     transitionDuration: transitionDuration + 'ms',
-    transform: 'translate(0px, 0px)'
+    transform: 'translate(' + translateX + 'px, 0px)',
+    backfaceVisibility: 'hidden'
   };
 
   // open state style
+  let translateOpenX = position === 'left' ? width : -1 * width;
   let openStyle = {
-    transform: 'translate(' + (-1 * width) + 'px, 0px)'
+    transform: 'translate(' + translateOpenX + 'px, 0px)'
   };
 
   // create current state styles
@@ -22,16 +25,18 @@ let OffCanvasBody = ({ width = 250, transitionDuration = 250, isMenuOpened = fal
   }
 
   return (
-    <div style={currStyle}>
+    <div style={currStyle} className={className}>
       {children}
     </div>
   );
-}
+
+};
 
 OffCanvasBody.propTypes = {
   width: PropTypes.number,
   transitionDuration: PropTypes.number,
-  isMenuOpened: PropTypes.bool
+  isMenuOpened: PropTypes.bool,
+  position: PropTypes.oneOf(["left", "right"])
 };
 
 export default OffCanvasBody;

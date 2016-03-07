@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  margin-top: 0px;
+}
+
+.bodyClass {
+  background-color: #fff;
+  padding: 100px;
+}
+
+.menuClass {
+  background-color: #999;
+  padding: 15px;
+}
