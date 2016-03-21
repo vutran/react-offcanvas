@@ -32,7 +32,7 @@ let OffCanvasMenu = ({ width = 250, transitionDuration = 250, isMenuOpened = fal
   }
 
   return (
-    <div style={{...style, ...currStyle}} className={className}>
+    <div style={{...currStyle, ...style}} className={className}>
       {children}
     </div>
   );
