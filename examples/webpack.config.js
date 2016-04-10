@@ -8,33 +8,33 @@ module.exports = {
   entry : [
     'eventsource-polyfill', // necessary for hot reloading with IE
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'index.js')
+    path.join(__dirname, 'index.js'),
   ],
   output: {
     publicPath: '/',
     path: __dirname,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
       {
         test: /\.css$/,
-        loaders: ['style', 'css?modules']
+        loaders: ['style', 'css?modules'],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel']
-      }
-    ]
+        loaders: ['babel'],
+      },
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
   resolve: {
     alias: {
-      "react-offcanvas": path.resolve('src')
-    }
+      "react-offcanvas": path.resolve(__dirname, '..', 'src'),
+    },
   },
 };
