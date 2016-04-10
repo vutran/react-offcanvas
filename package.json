@@ -1,6 +1,6 @@
 {
   "name": "react-offcanvas",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Off-canvas menus for React.",
   "main": "lib/index.js",
   "repository": {
