@@ -18,6 +18,7 @@ $ npm install --save react-offcanvas
   transitionDuration={300}
   isMenuOpened={false}
   position={"left"}
+  effect={"overlay"}
 >
   <OffCanvasBody className={"my-body-class"} style={{ fontSize: "18px" }}>
     This is the canvas body.
