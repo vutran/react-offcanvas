@@ -2,8 +2,9 @@
 
 import React from "react";
 
-let OffCanvas = ({
+const OffCanvas = ({
   width = 250,
+  height = 250,
   transitionDuration = 250,
   isMenuOpened = false,
   position = "left",
@@ -14,6 +15,7 @@ let OffCanvas = ({
   const transferProps = element => {
     return React.cloneElement(element, {
       width,
+      height,
       transitionDuration,
       isMenuOpened,
       position,
@@ -22,7 +24,7 @@ let OffCanvas = ({
   };
 
   // transfer the props from OffCanvas to the child
-  let offCanvasChildren = React.Children.map(children, transferProps);
+  const offCanvasChildren = React.Children.map(children, transferProps);
 
   return <div>{offCanvasChildren}</div>;
 };

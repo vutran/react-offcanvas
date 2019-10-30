@@ -2,8 +2,9 @@
 
 import React, { PropTypes } from "react";
 
-let OffCanvasBody = ({
+const OffCanvasBody = ({
   width = 250,
+  height = 250,
   transitionDuration = 250,
   isMenuOpened = false,
   position = "left",
@@ -12,31 +13,38 @@ let OffCanvasBody = ({
   className,
   style
 }) => {
-  // closed state style
-  let translateX = position === "left" ? 0 : 0;
-  let closedStyle = {
+  // translateOpen map
+  const translateOpen = {
+    left: {
+      overlay: "0 0",
+      parallax: width / 2 + "px, 0",
+      push: width + "px, 0",
+    },
+    right: {
+      overlay: "0 0",
+      parallax: -width / 2 + "px, 0",
+      push: -width + "px, 0",
+    },
+    top: {
+      overlay: "0 0",
+      parallax: "0, " + height / 2 + "px",
+      push: "0, " + height + "px",
+    },
+    bottom: {
+      overlay: "0 0",
+      parallax: "0, " + -height / 2 + "px",
+      push: "0, " + -height + "px",
+    },
+  }[position][effect];
+  
+  const currentStyle = Object.assign({
     transitionDuration: transitionDuration + "ms",
-    transform: "translate(" + translateX + "px, 0px)",
+    transform: "translate(" + (isMenuOpened ? translateOpen : "0, 0") +")",
     backfaceVisibility: "hidden"
-  };
-
-  // open state style
-  let translateOpenX = position === "left" ? width : -1 * width;
-  translateOpenX = effect === "parallax" ? translateOpenX / 2 : translateOpenX;
-  translateOpenX = effect === "overlay" ? 0 : translateOpenX;
-
-  let openStyle = {
-    transform: "translate(" + translateOpenX + "px, 0px)"
-  };
-
-  // create current state styles
-  let currStyle = Object.assign({}, closedStyle);
-  if (isMenuOpened) {
-    currStyle = Object.assign({}, currStyle, openStyle);
-  }
+  }, style);
 
   return (
-    <div style={{ ...currStyle, ...style }} className={className}>
+    <div style={currentStyle} className={className}>
       {children}
     </div>
   );
@@ -44,9 +52,10 @@ let OffCanvasBody = ({
 
 OffCanvasBody.propTypes = {
   width: PropTypes.number,
+  height: PropTypes.number,
   transitionDuration: PropTypes.number,
   isMenuOpened: PropTypes.bool,
-  position: PropTypes.oneOf(["left", "right"]),
+  position: PropTypes.oneOf(["left", "right", "top", "bottom"]),
   effect: PropTypes.oneOf(["push", "parallax", "overlay"]),
   style: PropTypes.object
 };
