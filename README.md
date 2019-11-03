@@ -100,32 +100,32 @@ export default class App extends Component {
 
 This is the main component you will be using to compose your body and menu.
 
-| Prop                 | Type     | Default | Description                                          |
-| :------------------- | :------- | :------ | :--------------------------------------------------- |
-| `width`              | `number` | 250     | The width of the menu and off-canvas transition.     |
-| `transitionDuration` | `number` | 250     | The time in ms for the transition.                   |
-| `isMenuOpened`       | `bool`   | false   | Is the menu opened or not.                           |
-| `position`           | `string` | "left"  | Position the menu to the "left" or "right".          |
-| `effect`             | `string` | "push"  | Choose menu effect. "push", "overlay" or "parallax". |
+| Prop                 | Type     | Default | Description                                                 |
+| :------------------- | :------- | :------ | :---------------------------------------------------------- |
+| `width`              | `number` | 250     | The width of the menu and off-canvas transition.            |
+| `transitionDuration` | `number` | 250     | The time in ms for the transition.                          |
+| `isMenuOpened`       | `bool`   | false   | Is the menu opened or not.                                  |
+| `position`           | `string` | "left"  | Position the menu to the "left", "right", "top" or "bottom. |
+| `effect`             | `string` | "push"  | Choose menu effect. "push", "overlay" or "parallax".        |
 
 ### `OffCanvasBody`
 
-| Prop                 | Type     | Default | Description                                      |
-| :------------------- | :------- | :------ | :----------------------------------------------- |
-| `width`              | `number` | 250     | The width of the menu and off-canvas transition. |
-| `transitionDuration` | `number` | 250     | The time in ms for the transition.               |
-| `isMenuOpened`       | `bool`   | false   | Is the menu opened or not.                       |
-| `position`           | `string` | "left"  | Position the menu to the "left" or "right".      |
-| `className`          | `string` |         | Custom className for the element.                |
-| `style`              | `object` |         | CSS style object for the element.                |
+| Prop                 | Type     | Default | Description                                                 |
+| :------------------- | :------- | :------ | :---------------------------------------------------------- |
+| `width`              | `number` | 250     | The width of the menu and off-canvas transition.            |
+| `transitionDuration` | `number` | 250     | The time in ms for the transition.                          |
+| `isMenuOpened`       | `bool`   | false   | Is the menu opened or not.                                  |
+| `position`           | `string` | "left"  | Position the menu to the "left", "right", "top" or "bottom. |
+| `className`          | `string` |         | Custom className for the element.                           |
+| `style`              | `object` |         | CSS style object for the element.                           |
 
 ### `OffCanvasMenu`
 
-| Prop                 | Type     | Default | Description                                      |
-| :------------------- | :------- | :------ | :----------------------------------------------- |
-| `width`              | `number` | 250     | The width of the menu and off-canvas transition. |
-| `transitionDuration` | `number` | 250     | The time in ms for the transition.               |
-| `isMenuOpened`       | `bool`   | false   | Is the menu opened or not.                       |
-| `position`           | `string` | "left"  | Position the menu to the "left" or "right".      |
-| `className`          | `string` |         | Custom className for the element.                |
-| `style`              | `object` |         | CSS style object for the element.                |
+| Prop                 | Type     | Default | Description                                                 |
+| :------------------- | :------- | :------ | :---------------------------------------------------------- |
+| `width`              | `number` | 250     | The width of the menu and off-canvas transition.            |
+| `transitionDuration` | `number` | 250     | The time in ms for the transition.                          |
+| `isMenuOpened`       | `bool`   | false   | Is the menu opened or not.                                  |
+| `position`           | `string` | "left"  | Position the menu to the "left", "right", "top" or "bottom. |
+| `className`          | `string` |         | Custom className for the element.                           |
+| `style`              | `object` |         | CSS style object for the element.                           |

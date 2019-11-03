@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
-export OffCanvas from './OffCanvas';
-export OffCanvasBody from './OffCanvasBody';
-export OffCanvasMenu from './OffCanvasMenu';
+export { default as OffCanvas } from './OffCanvas';
+export { default as OffCanvasBody } from './OffCanvasBody';
+export { default as OffCanvasMenu } from './OffCanvasMenu';

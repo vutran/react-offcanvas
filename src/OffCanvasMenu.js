@@ -2,8 +2,9 @@
 
 import React, { PropTypes } from "react";
 
-let OffCanvasMenu = ({
+const OffCanvasMenu = ({
   width = 250,
+  height = 250,
   transitionDuration = 250,
   isMenuOpened = false,
   position = "left",
@@ -12,36 +13,56 @@ let OffCanvasMenu = ({
   className,
   style
 }) => {
-  console.log(position, effect);
-  // closed state style
-  let left = position === "left" ? -1 * width + "px" : "auto";
-  let right = position === "left" ? "auto" : -1 * width + "px";
-  let translateX = position === "left" ? -1 * width : 0;
-  let closedStyle = {
+  // position styles map
+  const { left, right, top, bottom, translateClose, translateOpen } = {
+    left: {
+      left: -width + "px",
+      right: "auto",
+      top: 0,
+      bottom: "auto",
+      translateClose: -width + "px, 0",
+      translateOpen: width + "px, 0",
+    },
+    right: {
+      left: "auto",
+      right: -width + "px",
+      top: 0,
+      bottom: "auto",
+      translateClose: "0, 0",
+      translateOpen: -width + "px, 0",
+    },
+    top: {
+      left: 0,
+      right: "auto",
+      top: -height + "px",
+      bottom: "auto",
+      translateClose: "0, " + -height + "px",
+      translateOpen: "0, " + height + "px",
+    },
+    bottom: {
+      left: 0,
+      right: "auto",
+      top: "auto",
+      bottom: -height + "px",
+      translateClose: "0, 0",
+      translateOpen: "0, " + -height + "px",
+    },
+  }[position];
+
+  const currentStyle = Object.assign({
     width: width + "px",
     position: "fixed",
-    top: "0px",
-    left: left,
-    right: right,
-    transform: "translate(" + translateX + "px, 0px)",
+    top,
+    bottom,
+    left,
+    right,
+    transform: "translate(" + (isMenuOpened ? translateOpen : translateClose) + ")",
     transitionDuration: transitionDuration + "ms",
     backfaceVisibility: "hidden"
-  };
-
-  // open state style
-  let translateOpenX = position === "left" ? width : -1 * width;
-  let openStyle = {
-    transform: "translate(" + translateOpenX + "px, 0px)"
-  };
-
-  // create current state styles
-  let currStyle = Object.assign({}, closedStyle);
-  if (isMenuOpened) {
-    currStyle = Object.assign({}, currStyle, openStyle);
-  }
+  }, style);
 
   return (
-    <div style={{ ...currStyle, ...style }} className={className}>
+    <div style={currentStyle} className={className}>
       {children}
     </div>
   );
@@ -49,9 +70,10 @@ let OffCanvasMenu = ({
 
 OffCanvasMenu.propTypes = {
   width: PropTypes.number,
+  height: PropTypes.number,
   transitionDuration: PropTypes.number,
   isMenuOpened: PropTypes.bool,
-  position: PropTypes.oneOf(["left", "right"]),
+  position: PropTypes.oneOf(["left", "right", "top", "bottom"]),
   effect: PropTypes.oneOf(["push", "parallax", "overlay"]),
   style: PropTypes.object
 };

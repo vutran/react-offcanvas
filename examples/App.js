@@ -6,21 +6,23 @@ import { OffCanvas, OffCanvasMenu, OffCanvasBody } from "react-offcanvas";
 import styles from "./styles.css";
 
 export default class App extends Component {
-  componentWillMount() {
-    // sets the initial state
-    this.setState({
-      isMenuOpened: false
-    });
+  state = {
+    isMenuOpened: false,
+  }
+
+  toggle = () => {
+    this.setState(state => ({ isMenuOpened: !state.isMenuOpened }));
   }
 
   render() {
     return (
       <OffCanvas
         width={300}
+        height={300}
         transitionDuration={300}
         isMenuOpened={this.state.isMenuOpened}
-        position={"right"}
-        effect={"overlay"}
+        position={"top"}
+        effect={"parallax"}
       >
         <OffCanvasBody
           className={styles.bodyClass}
@@ -28,7 +30,7 @@ export default class App extends Component {
         >
           <p>This is the main body container.</p>
           <p>
-            <a href="#" onClick={this.handleClick.bind(this)}>
+            <a href="#" onClick={this.toggle}>
               Click here
             </a>{" "}
             to toggle the menu.
@@ -43,7 +45,7 @@ export default class App extends Component {
             <li>Link 4</li>
             <li>Link 5</li>
             <li>
-              <a href="#" onClick={this.handleClick.bind(this)}>
+              <a href="#" onClick={this.toggle}>
                 Toggle Menu
               </a>
             </li>
@@ -51,10 +53,5 @@ export default class App extends Component {
         </OffCanvasMenu>
       </OffCanvas>
     );
-  }
-
-  handleClick() {
-    // toggles the menu opened state
-    this.setState({ isMenuOpened: !this.state.isMenuOpened });
   }
 }
