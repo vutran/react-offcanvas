@@ -12,7 +12,7 @@ let OffCanvasMenu = ({
   className,
   style
 }) => {
-  console.log(position, effect);
+  
   // closed state style
   let left = position === "left" ? -1 * width + "px" : "auto";
   let right = position === "left" ? "auto" : -1 * width + "px";
